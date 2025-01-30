@@ -1,0 +1,23 @@
+.header-list{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+.header-list .btn-crear{
+    text-decoration:none;
+    position: relative;
+    font-size: 15px;
+    color: #fff;
+    border-radius: 5px;
+    padding:10px 20px;
+    text-shadow: 0 0 1px var(--main-color1);
+    transition:background .5s ease;
+    background: var(--main-color);
+    overflow: hidden;
+    z-index: 1;
+    &:hover{
+        background-color: var(--main-color1);
+    }
+}

@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block title %} <title>SIGFE-Listado de Tareas</title> {% endblock %}
+</head>
+
+<body>
+    {% block contenido %}
+    <div class="main-panel">
+        <div class="content">
+            <div class="panel-header bg-primary-gradient">
+                <div class="page-inner py-5">
+                    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                        <div>
+                            <h1 class="text-white pb-2 fw-bold">API con Django </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-inner mt--5">
+                <div class="col-md-12">
+                    {% if messages %}
+                    <div class="alert alert-success" id="alert-success">
+                        <ul class="lista-mensajes">
+                            {% for message in messages %}
+                                <li  {% if message.tags %}  {% endif %}>{{message}}</li>
+                            {%endfor%}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </ul>   
+                    </div>
+                    {% endif %}
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center header-list">
+                                <h4 class="card-title">Tasks List Pending</h4>
+                                <a href="{% url 'create_task' %}" class="btn-crear">
+                                    Create Task
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table id="add-row" class="display table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Desciption</th>
+                                            <th>User</th>
+                                            <th>Date-Completed</th>
+                                            <th style="width: 10%">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Desciption</th>
+                                            <th>User</th>
+                                            <th>Date-Completed</th>
+                                            <th style="width: 10%">Acción</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        {% for task in tasks %}
+                                        <tr>
+                                            {% if task.important %}
+                                                <td style='color:#1c5'>{{ task.title }}</td>
+                                            {% else %}
+                                                <td>{{ task.title }}</td>
+                                            {% endif %}
+                                            <td>{{ task.desciption }}</td>
+                                            <td>{{ task.user.username }}</td>
+                                            <td>{{ task.datecompleted|date:'M j Y:i' }}</td>
+                                            <td>
+                                                <div class="form-button-action">
+                                                    <a type="button" href="{% url 'task_detail' task.id%}"
+                                                        class="btn btn-link btn-primary btn-lg">
+                                                        <i class="fa fa-edit"></i>
+                                                    </a>
+                                                    <button type="button" data-toggle="modal" title=""
+                                                        class="btn btn-link btn-danger"
+                                                        data-target="#eliminarModal{{ task.id }}">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                    <!-- Modal de Confirmación de Eliminación -->
+                                                    <div class="modal fade" id="eliminarModal{{ task.id }}"
+                                                        tabindex="-1" role="dialog"
+                                                        aria-labelledby="eliminarModalLabel{{ task.id }}"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title"
+                                                                        id="eliminarModalLabel{{ task.id }}">
+                                                                        Confirmar Eliminación</h5>
+                                                                    <button type="button" class="close"
+                                                                        data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    ¿Estás seguro que deseas eliminar esta tarea 
+                                                                    <strong>{{ task.title }} </strong>?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancelar</button>
+                                                                    <form
+                                                                        action="{% url 'delete_task' task.id %}"
+                                                                        method="post">
+                                                                        {% csrf_token %}
+                                                                        <input type="submit" class="btn btn-danger"
+                                                                            value="Eliminar">
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block footer %} {{ block.super }} {% endblock %}
+    </div>
+    {% endblock %}
+    {% block javascript %} {{ block.super }} {% endblock %}
+</body>
+
+</html>

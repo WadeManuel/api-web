@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% block title %} <title>RadLibro-Crear Tarea</title> {% endblock %}
+</head>
+
+<body>
+    {% block contenido %}
+    <div class="main-panel">
+        <div class="content">
+            <div class="panel-header bg-primary-gradient">
+                <div class="page-inner py-5">
+                    <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+                        <div>
+                            <h1 class="text-white pb-2 fw-bold">Create Task</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-inner mt--5">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="d-flex align-items-center">
+                                <h4 class="card-title">Tasks Create</h4>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div >
+                                    <div class="form-group">
+                                        <form action="" method="POST" class="card card-body">
+                                            {% csrf_token %}
+                                            {{error}}
+                                            {{form.as_p}}
+                                            <button class="btn btn-primary">Save</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% block footer %} {{ block.super }} {% endblock %}
+    </div>
+    {% endblock %}
+    {% block javascript %} {{ block.super }} {% endblock %}
+</body>
+
+</html>
