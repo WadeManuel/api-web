@@ -126,16 +126,18 @@
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="login-form" clase="show">
-            <img src="{% static 'assets/img/software-para-restaurantes-1.png' %}" alt="Logo" style="width: 80px; margin-bottom: 20px;">
-            <h2>Signup</h2>
-            <form method="POST">
-                {% csrf_token %}
-                {{error}}
-                {{ form.as_p }}
-                <button>Signup</button>
-            </form>
+    <div class="container" >
+        <div class="row" >
+            <div class="col-md-4 offset-md-4 mt-5">
+                <img src="{% static 'assets/img/software-para-restaurantes-1.png' %}" alt="Logo" style="width: 80px; margin-bottom: 20px;">
+                <h2 class="text-center">Signup</h2>
+                <form method="POST" class="card card-body text-center">
+                    {% csrf_token %}
+                    {{error}}
+                    {{ form}}
+                    <button class="btn btn-primary">Signup</button>
+                </form>
+            </div>
         </div>
     </div>
 
