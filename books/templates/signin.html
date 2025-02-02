@@ -31,12 +31,21 @@
     <div class="container" >
         <div class="row" >
             <div class="col-md-4 offset-md-4 mt-5">
-                <img src="{% static 'assets/img/software-para-restaurantes-1.png' %}" alt="Logo" style="width: 80px; margin-bottom: 20px;">
-                <h2 class="text-center">Signin</h2>
-                <form method="POST" class="card card-body text-center">
+                <form method="POST" class="card card-body ">
+                    <h1 class="text-center">Signin</h1>
                     {% csrf_token %}
                     {{error}}
-                    {{ form}}
+                    <div class="mb-3">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username"  name="username" class="form-control" 
+                        placeholder="Username">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password"  name="password" class="form-control" 
+                        placeholder="Password">
+                    </div>
                     <button class="btn btn-primary">Signin</button>
                 </form>
             </div>
