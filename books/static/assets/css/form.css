@@ -6,3 +6,10 @@
     justify-content: center;
     align-items: center;
 }
+@media (max-width:450px) 
+{
+    .card-body, .form-group
+    {
+        padding: 0rem;
+    }
+}

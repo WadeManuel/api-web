@@ -247,6 +247,7 @@
 				font-size:26px;
 				letter-spacing:none;
 			}
+		}
 
 			
 
@@ -270,7 +271,8 @@
 		   font-size: 25px;
 			color: #fff;
 		}
-
+	
+	
 @media (max- width::1100px){
 	html{
 		font-size:55%;
@@ -300,40 +302,6 @@
 }
 .lista-mensajes li{
 	color:#55555;
-}
-
-
-/*Animación */
-@keyframes homeBgText{
-	0%,
-	10%,
-	100%{
-		background-position:-330px 0;
-	}
-	65%,
-	85%
-	{
-		background-position:0 0;
-	}
-}
-@keyframes homeCursortext{
-	0%,
-	10%,
-	100%{
-		width:0;
-	}
-	65%,
-	78%,
-	85%
-	{
-		width:100%;
-		opacity:1;
-	}
-	75%,
-	81%
-	{
-		opacity:0;
-	}
 }
 
 /*Estilos para mi tabla donde voy a listar datos*/
@@ -370,9 +338,8 @@ table td,th{
 	<link rel="stylesheet" href="{% static 'assets/css/lista.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 
-	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 	<link rel="stylesheet" href="{% static 'assets/css/form.css' %}">
-	<link rel="stylesheet" href="{% static 'boxicons/css/boxicons.css' %}">
+	
 
 	
 	
@@ -414,7 +381,7 @@ table td,th{
 									<div class="avatar-sm">
 										<img src="{% static 'assets/img/mlane.jpg' %}" alt="User Avatar" class="avatar-img rounded-circle">
 									</div>
-									<span class="ml-2 text-white"><strong>Bienvenido, {{ user.username }}</strong></span>
+									<span class="ml-2 text-white"><strong>Welcome, {{ user.username }}</strong></span>
 								</div>
 							</a>
 							<ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -454,7 +421,7 @@ table td,th{
 									{{user.username}}
 								</span>
 								<span>
-									Usuario
+								User
 								</span>
 							</a>
 						</div>
@@ -507,7 +474,7 @@ table td,th{
 					<div class="page-inner py-5">
 						<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
 							<div>
-								<h1 class="text-white pb-2 fw-bold">API con Django para asignar Tareas </h1>
+								<h1 class="text-white pb-2 fw-bold">Web Application for Task Management</h1>
 							</div>
 						</div>
 					</div>
@@ -518,15 +485,16 @@ table td,th{
                             <div class="moving-text">
 								<h2>Tasks Create</h2>
 								<div class="text-animate">
-									<h3>Welcome mysiteWeb</h3>
+									<h3>Welcome</h3>
 								</div>
 								<p>
-									Este sistema se hizo pensando en ti convinando la más 
-									avanzada tecnología para poder avanzar al proximo nivel
-									poder crear tus tareas mas comodo. 
+									This system was made with you in mind, combining the
+									most advanced technology to be able to advance to
+									the next level and create your tasks easier
+									and more efficient.
 								</p>
 								<div>
-									<a href="{% url 'tasks' %}" id="boton" style="text-decoration:none">Comenzar</a>
+									<a href="{% url 'tasks' %}" id="boton" style="text-decoration:none">Begin</a>
 								</div>
 								<div class="social-redes">
 									<a href="#"><i class='bx bxl-whatsapp'></i></a>
@@ -554,7 +522,7 @@ table td,th{
 			<footer class="footer">
 				<div class="container-fluid">
 					<div class="copyright ml-auto">
-						2024, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://github.com.wademanuel">WadeManuel</a>
+						2024, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://github.com/wademanuel">WadeManuel</a>
 					</div>				
 				</div>
 			</footer>
@@ -563,10 +531,8 @@ table td,th{
 		</div>
 		{% endblock %}
 	</div>
+
 	{% block javascript %}
-
-	
-
 	<!--   Core JS Files   -->
 	<script src="{% static 'assets/js/core/jquery.3.2.1.min.js' %}"></script>
 	<script src="{% static 'assets/js/core/popper.min.js' %}"></script>
@@ -674,25 +640,24 @@ table td,th{
 		            });
 		        });
 		    });
-		
 		}
 		irArriba(500);
 	</script>
-
-	 <script>
-		 /*-----Scroll reveal-------------*/ 
-			 ScrollReveal({
-				reset: true,
-				distance:'80px',
-				duration:2000,
-				delay:200
-			});
-
-			ScrollReveal().reveal('.moving-text,.heading,.encabezado,.container-img2 img ', { origin:'top' });
-			ScrollReveal().reveal('.image-container img,.card-box,.container_servicios,.contact form', { origin:'bottom' });
-			ScrollReveal().reveal('.moving-text h2,.moving-text p,.contenedor-img img', { origin:'left' });
-			ScrollReveal().reveal('.moving-text h3,.contenedor-info', { origin:'right' });
-			</script>
 	{% endblock %}
+	<script>
+		/*-----Scroll reveal-------------*/ 
+			ScrollReveal({
+			   reset: true,
+			   distance:'80px',
+			   duration:2000,
+			   delay:200
+		   });
+
+		   ScrollReveal().reveal('.moving-text,.heading,.encabezado,.container-img2 img ', { origin:'top' });
+		   ScrollReveal().reveal('.image-container img,.card-box,.container_servicios,.contact form', { origin:'bottom' });
+		   ScrollReveal().reveal('.moving-text h2,.moving-text p,.contenedor-img img', { origin:'left' });
+		   ScrollReveal().reveal('.moving-text h3,.contenedor-info', { origin:'right' });
+   </script>
+
 </body>
 </html>

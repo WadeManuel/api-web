@@ -84,6 +84,7 @@ def completed_task(request,task_id):
         task.datecompleted = timezone.now()
         print(task)
         task.save()
+        messages.success(request,"Tasks completed success")
         return redirect('tasks')
 
 @login_required

@@ -21,3 +21,12 @@
         background-color: var(--main-color1);
     }
 }
+
+@media (max-width:450px){
+    .header-list{
+        flex-direction: column-reverse;
+    }
+    .header-list .btn-crear{
+        margin-bottom: 15px;
+    }
+}
